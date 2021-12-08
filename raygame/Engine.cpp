@@ -26,8 +26,13 @@ void Engine::start()
 	InitWindow(screenWidth, screenHeight, "Intro To C++");
 	SetTargetFPS(0);
 
+	Actor* phil = new Actor*(350, 400, "Phil");
+
 	//Start the scene
 	m_currentSceneIndex = addScene(new Scene());
+
+	m_scenes[m_currentSceneIndex]->addActor(phil);
+
 	m_scenes[m_currentSceneIndex]->start();
 }
 

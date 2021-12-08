@@ -123,7 +123,7 @@ public:
 
 private:
     /// <summary>
-    /// Updates the global transform to be the combination of the paernt and local
+    /// Updates the global transform to be the combination of the parent and local
     /// transforms. Updates the transforms for all children of this transform
     /// </summary>
     void updateTransforms();
