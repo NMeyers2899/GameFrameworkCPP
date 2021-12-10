@@ -137,14 +137,21 @@ Component* Actor::getComponent(const char* name)
 
 void Actor::update(float deltaTime)
 {
+    for (int i = 0; i < m_componentCount; i++)
+        m_components[i]->update(deltaTime);
 }
 
 void Actor::draw()
 {
+    for (int i = 0; i < m_componentCount; i++)
+        m_components[i]->draw();
 }
 
 void Actor::end()
 {
+    for (int i = 0; i < m_componentCount; i++)
+        m_components[i]->end();
+
     m_started = false;
 }
 

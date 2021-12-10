@@ -1,6 +1,6 @@
 #pragma once
 #include "Component.h"
-#include <raylib.h>
+#include "raylib.h"
 
 class SpriteComponent : public Component
 {
@@ -10,7 +10,7 @@ public:
 	SpriteComponent(Actor* owner, const char* name, const char* path) : Component(owner, name) 
 	{ m_texture = RAYLIB_H::LoadTexture(path); };
 
-	~SpriteComponent();
+	~SpriteComponent() {};
 
 	int getWidth() { return m_texture.width; }
 	void setWidth(int value) { m_texture.width = value; }

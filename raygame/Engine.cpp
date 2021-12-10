@@ -1,6 +1,8 @@
 #include "Engine.h"
 #include "raylib.h"
 #include "Transform2D.h"
+#include "MoveComponent.h"
+#include "SpriteComponent.h"
 
 bool Engine::m_applicationShouldClose = false;
 Scene** Engine::m_scenes = new Scene*;
@@ -26,7 +28,11 @@ void Engine::start()
 	InitWindow(screenWidth, screenHeight, "Intro To C++");
 	SetTargetFPS(0);
 
-	Actor* phil = new Actor*(350, 400, "Phil");
+	Actor* phil = new Actor(350, 400, "Phil");
+	MoveComponent* philMove = new MoveComponent(phil, "", 100.0f);
+	SpriteComponent* philSprite = new SpriteComponent(phil, "", "images/player.png");
+	phil->addComponent((Component*)philMove);
+	phil->addComponent((Component*)philSprite);
 
 	//Start the scene
 	m_currentSceneIndex = addScene(new Scene());
