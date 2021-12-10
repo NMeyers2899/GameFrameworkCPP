@@ -13,5 +13,5 @@ void SpriteComponent::draw()
 	setWidth((int)ownerPosition.x);
 	setHeight((int)ownerPosition.y);
 
-	DrawTextureEx(m_texture, ownerPosition, 0, 1, WHITE);
+	DrawTextureEx(m_texture, ownerPosition, 0, 0.5, WHITE);
 }
