@@ -11,8 +11,8 @@ void Player::update(float deltaTime)
 
 	float xDirection, yDirection;
 
-	xDirection = RAYLIB_H::IsKeyPressed(KEY_A) + RAYLIB_H::IsKeyDown(KEY_D);
-	yDirection = RAYLIB_H::IsKeyPressed(KEY_W) + RAYLIB_H::IsKeyDown(KEY_S);
+	xDirection = (int)IsKeyPressed(KEY_D) - (int)IsKeyDown(KEY_A);
+	yDirection = (int)IsKeyPressed(KEY_S) - (int)IsKeyDown(KEY_W);
 	moveDirection = MathLibrary::Vector2{ xDirection, yDirection };
 
 	moveComponent->setDirection(moveDirection);
