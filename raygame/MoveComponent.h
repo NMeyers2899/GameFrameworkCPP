@@ -9,11 +9,11 @@ public:
 	///<summary>
 	/// Creates a basic MoveComponent with no owner, name, or speed.
 	///</summary>
-	MoveComponent() : Component(nullptr, "MoveComponent") { m_maxSpeed = 0; }
+	MoveComponent() : Component("MoveComponent") { m_maxSpeed = 0; }
 	///<summary>
 	/// Creates a basic MoveComponent with an owner, name, and speed.
 	///</summary>
-	MoveComponent(const char* name, float speed) : Component(nullptr, name) { m_maxSpeed = speed; };
+	MoveComponent(const char* name, float speed) : Component(name) { m_maxSpeed = speed; };
 	///<summary>
 	/// Is called upon the deletion of the MoveComponent
 	///</summary>

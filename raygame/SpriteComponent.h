@@ -5,12 +5,12 @@
 class SpriteComponent : public Component
 {
 public:
-	SpriteComponent() : Component(nullptr, "SpriteComponent") {};
+	SpriteComponent() : Component("SpriteComponent") {};
 
-	SpriteComponent(const char* name, const char* path) : Component(nullptr, name) 
+	SpriteComponent(const char* name, const char* path) : Component(name) 
 	{ m_texture = new Texture2D(RAYLIB_H::LoadTexture(path)); };
 
-	SpriteComponent(const char* name, Texture2D* texture) : Component(nullptr, name) { m_texture = texture; }
+	SpriteComponent(const char* name, Texture2D* texture) : Component(name) { m_texture = texture; }
 
 	~SpriteComponent() override;
 

@@ -2,18 +2,30 @@
 #include "Transform2D.h"
 #include "MoveComponent.h"
 #include "raylib.h"
+#include "InputComponent.h"
+#include "MoveComponent.h"
+#include "SpriteComponent.h"
+
+void Player::start()
+{
+	Actor::start();
+
+	m_inputComponent = dynamic_cast<InputComponent*>(addComponent(new InputComponent()));
+	m_moveComponent = dynamic_cast<MoveComponent*>(addComponent(new MoveComponent()));
+	m_moveComponent->setMaxSpeed(500);
+	m_spriteComponent = dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("SpriteComponent", "Images/player.png")));
+
+
+	// Set spawn point.
+	// Set move speed.
+	// Set position clamps.
+}
 
 void Player::update(float deltaTime)
 {
-	MoveComponent* moveComponent = (MoveComponent*)getComponent("Move Component");
+	MathLibrary::Vector2 moveDirection = m_inputComponent->getMoveAxis();
 
-	MathLibrary::Vector2 moveDirection;
-
-	float xDirection, yDirection;
-
-	xDirection = (int)IsKeyPressed(KEY_D) - (int)IsKeyDown(KEY_A);
-	yDirection = (int)IsKeyPressed(KEY_S) - (int)IsKeyDown(KEY_W);
-	moveDirection = MathLibrary::Vector2{ xDirection, yDirection };
+	m_moveComponent->setVelocity(moveDirection * 500);
 
 	Actor::update(deltaTime);
 }

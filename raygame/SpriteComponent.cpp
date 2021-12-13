@@ -20,6 +20,7 @@ void SpriteComponent::draw()
 
 	m_texture->width = m_width;
 	m_texture->height = m_height;
+
 	// Gets the position of the owner.
 	MathLibrary::Vector2 up = MathLibrary::Vector2{ getOwner()->getTransform()->getGlobalMatrix()->m01, 
 		getOwner()->getTransform()->getGlobalMatrix()->m11 };
@@ -28,14 +29,14 @@ void SpriteComponent::draw()
 
 	// Changes the position of the sprite to be in the center of the transform.
 	position = position - (forward * getWidth() / 2);
-	position = position - (up * getHeight() / 2);
+	position = position - (up.normalize() * getHeight() / 2);
 
 	// Change the position vector to be a raylib Vector2.
 	RAYLIB_H::Vector2 rayPos = { position.x, position.y };
 
 	// Get the value of rotation in radians from the owner transform.
-	float rotation = atan2(getOwner()->getTransform()->getGlobalMatrix->m10, 
-		getOwner()->getTransform()->getGlobalMatrix->m00);
+	float rotation = atan2(getOwner()->getTransform()->getGlobalMatrix()->m10, 
+		getOwner()->getTransform()->getGlobalMatrix()->m00);
 
 	// Draw the sprite
 	RAYLIB_H::DrawTextureEx(*m_texture, rayPos, (float)(rotation * 180.0f / PI), 1, WHITE);

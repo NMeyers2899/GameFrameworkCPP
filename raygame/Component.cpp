@@ -2,7 +2,7 @@
 
 void Component::assignOwner(Actor* owner)
 {
-	if (!getOwner())
+	if (getOwner())
 		return;
 
 	m_owner = owner;

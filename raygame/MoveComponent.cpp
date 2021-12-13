@@ -7,5 +7,5 @@ void MoveComponent::update(float deltaTime)
 	MathLibrary::Vector2 newPosition = getOwner()->getTransform()->getLocalPosition() + getVelocity() * deltaTime;
 
 	// Set the actors position to the new one.
-	getOwner()->getTransform->SetLocalPosition(newPosition);
+	getOwner()->getTransform()->setLocalPosition(newPosition);
 }

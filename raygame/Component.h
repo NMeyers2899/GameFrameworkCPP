@@ -6,7 +6,7 @@ class Component
 {
 public:
 	Component() { m_owner = nullptr; m_name = ""; }
-	Component(Actor* owner, const char* name) { m_owner = owner; m_name = name; }
+	Component(const char* name) {m_name = name; }
 	virtual ~Component() {}
 
 	/// <summary>

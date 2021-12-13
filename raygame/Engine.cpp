@@ -4,6 +4,7 @@
 #include "MoveComponent.h"
 #include "SpriteComponent.h"
 #include "Player.h"
+#include "MainScene.h"
 
 bool Engine::m_applicationShouldClose = false;
 Scene** Engine::m_scenes = new Scene*;
@@ -29,16 +30,8 @@ void Engine::start()
 	InitWindow(screenWidth, screenHeight, "Intro To C++");
 	SetTargetFPS(0);
 
-	Player* phil = new Player(350, 400, "Phil");
-	MoveComponent* philMove = new MoveComponent("MoveComponent", 100.0f);
-	SpriteComponent* philSprite = new SpriteComponent("SpriteComponent", "images/player.png");
-	phil->addComponent((Component*)philMove);
-	phil->addComponent((Component*)philSprite);
-
 	//Start the scene
-	m_currentSceneIndex = addScene(new Scene());
-
-	m_scenes[m_currentSceneIndex]->addActor(phil);
+	m_currentSceneIndex = addScene(new MainScene());
 
 	m_scenes[m_currentSceneIndex]->start();
 }
