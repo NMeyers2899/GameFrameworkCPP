@@ -17,6 +17,9 @@ void SpriteComponent::draw()
 	m_width = getOwner()->getTransform()->getScale().x;
 	m_height = getOwner()->getTransform()->getScale().y;
 
+
+	m_texture->width = m_width;
+	m_texture->height = m_height;
 	// Gets the position of the owner.
 	MathLibrary::Vector2 up = MathLibrary::Vector2{ getOwner()->getTransform()->getGlobalMatrix()->m01, 
 		getOwner()->getTransform()->getGlobalMatrix()->m11 };
