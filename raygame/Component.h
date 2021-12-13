@@ -25,6 +25,10 @@ public:
 	/// </summary>
 	Actor* getOwner() { return m_owner; }
 
+	/// <summary>
+	/// Assigns an owner to the component if it does not have one already.
+	/// </summary>
+	/// <param name="owner"> The potential owner of the component. </param>
 	void assignOwner(Actor* owner);
 
 	/// <summary>
@@ -43,6 +47,7 @@ public:
 	virtual void draw();
 	virtual void end() { m_started = false; }
 	virtual void onCollision(Actor* target);
+	virtual void onDestroy() {};
 
 private:
 	Actor* m_owner;

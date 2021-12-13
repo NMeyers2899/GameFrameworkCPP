@@ -2,14 +2,38 @@
 #include <Vector2.h>
 #include "Transform2D.h"
 #include "Actor.h"
+#include <Matrix3.h>
+#include <cmath>
+
+SpriteComponent::~SpriteComponent()
+{
+	RAYLIB_H::UnloadTexture(*m_texture);
+	delete m_texture;
+}
 
 void SpriteComponent::draw()
 {
-	float ownerPositionX = getOwner()->getTransform()->getWorldPosition().x;
-	float ownerPositionY = getOwner()->getTransform()->getWorldPosition().y;
+	// Get the scale of the global matrix.
+	m_width = getOwner()->getTransform()->getScale().x;
+	m_height = getOwner()->getTransform()->getScale().y;
 
-	Vector2 ownerPosition = Vector2{ ownerPositionX, ownerPositionY };
+	// Gets the position of the owner.
+	MathLibrary::Vector2 up = MathLibrary::Vector2{ getOwner()->getTransform()->getGlobalMatrix()->m01, 
+		getOwner()->getTransform()->getGlobalMatrix()->m11 };
+	MathLibrary::Vector2 forward = getOwner()->getTransform()->getForward();
+	MathLibrary::Vector2 position = getOwner()->getTransform()->getWorldPosition();
 
+	// Changes the position of the sprite to be in the center of the transform.
+	position = position - (forward * getWidth() / 2);
+	position = position - (up * getHeight() / 2);
 
-	DrawTexture(m_texture, ownerPosition.x, ownerPosition.y, WHITE);
+	// Change the position vector to be a raylib Vector2.
+	RAYLIB_H::Vector2 rayPos = { position.x, position.y };
+
+	// Get the value of rotation in radians from the owner transform.
+	float rotation = atan2(getOwner()->getTransform()->getGlobalMatrix->m10, 
+		getOwner()->getTransform()->getGlobalMatrix->m00);
+
+	// Draw the sprite
+	RAYLIB_H::DrawTextureEx(*m_texture, rayPos, (float)(rotation * 180.0f / PI), 1, WHITE);
 }

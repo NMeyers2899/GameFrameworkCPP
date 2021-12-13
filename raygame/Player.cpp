@@ -15,7 +15,5 @@ void Player::update(float deltaTime)
 	yDirection = (int)IsKeyPressed(KEY_S) - (int)IsKeyDown(KEY_W);
 	moveDirection = MathLibrary::Vector2{ xDirection, yDirection };
 
-	moveComponent->setDirection(moveDirection);
-
 	Actor::update(deltaTime);
 }

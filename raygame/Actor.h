@@ -100,6 +100,6 @@ private:
     Transform2D* m_transform;
     Collider* m_collider;
     Component** m_components;
-    int m_componentCount;
+    unsigned int m_componentCount;
 };
 

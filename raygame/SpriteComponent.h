@@ -5,21 +5,25 @@
 class SpriteComponent : public Component
 {
 public:
-	SpriteComponent() : Component(nullptr, "") {};
+	SpriteComponent() : Component(nullptr, "SpriteComponent") {};
 
-	SpriteComponent(Actor* owner, const char* name, const char* path) : Component(owner, name) 
-	{ m_texture = RAYLIB_H::LoadTexture(path); };
+	SpriteComponent(const char* name, const char* path) : Component(nullptr, name) 
+	{ m_texture = new Texture2D(RAYLIB_H::LoadTexture(path)); };
 
-	~SpriteComponent() {};
+	SpriteComponent(const char* name, Texture2D* texture) : Component(nullptr, name) { m_texture = texture; }
 
-	int getWidth() { return m_texture.width; }
-	void setWidth(int value) { m_texture.width = value; }
+	~SpriteComponent() override;
 
-	int getHeight() { return m_texture.height; }
-	void setHeight(int value) { m_texture.height = value; }
+	int getWidth() { return m_width; }
+	void setWidth(int width) { m_width = width; }
+
+	int getHeight() { return m_height; }
+	void setHeight(int height) { m_height = height; }
 
 	void draw() override;
 
 private:
-	Texture2D m_texture;
+	Texture2D* m_texture;
+	int m_width;
+	int m_height;
 };

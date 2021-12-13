@@ -30,8 +30,8 @@ void Engine::start()
 	SetTargetFPS(0);
 
 	Player* phil = new Player(350, 400, "Phil");
-	MoveComponent* philMove = new MoveComponent(phil, "Move Component", 100.0f);
-	SpriteComponent* philSprite = new SpriteComponent(phil, "", "images/player.png");
+	MoveComponent* philMove = new MoveComponent("MoveComponent", 100.0f);
+	SpriteComponent* philSprite = new SpriteComponent("SpriteComponent", "images/player.png");
 	phil->addComponent((Component*)philMove);
 	phil->addComponent((Component*)philSprite);
 

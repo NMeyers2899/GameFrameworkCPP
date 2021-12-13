@@ -3,11 +3,9 @@
 
 void MoveComponent::update(float deltaTime)
 {
-	m_velocity = m_moveDirection.normalize() * m_speed * deltaTime;
+	// Add the new velocity to the old position to get the new position.
+	MathLibrary::Vector2 newPosition = getOwner()->getTransform()->getLocalPosition() + getVelocity() * deltaTime;
 
-	m_position = getOwner()->getTransform()->getLocalPosition();
-
-	m_position = m_position + m_velocity;
-
-	getOwner()->getTransform()->setLocalPosition(m_position);
+	// Set the actors position to the new one.
+	getOwner()->getTransform->SetLocalPosition(newPosition);
 }
