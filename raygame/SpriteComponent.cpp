@@ -10,8 +10,6 @@ void SpriteComponent::draw()
 
 	Vector2 ownerPosition = Vector2{ ownerPositionX, ownerPositionY };
 
-	setWidth((int)ownerPosition.x);
-	setHeight((int)ownerPosition.y);
 
-	DrawTextureEx(m_texture, ownerPosition, 0, 0.5, WHITE);
+	DrawTexture(m_texture, ownerPosition.x, ownerPosition.y, WHITE);
 }

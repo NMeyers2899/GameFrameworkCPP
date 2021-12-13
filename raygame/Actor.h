@@ -9,17 +9,17 @@ public:
     Actor();
     ~Actor();
 
-    /// <param name="x">Position on the x axis</param>
-    /// <param name="y">Position on the y axis</param>
-    /// <param name="name">The name of this actor.</param>
+    /// <param name="x"> Position on the x axis </param>
+    /// <param name="y"> Position on the y axis </param>
+    /// <param name="name"> The name of this actor. </param>
     Actor(float x, float y, const char* name);
 
     /// <summary>
+    /// Gets if the actors start function has been called.
     /// </summary>
-    /// <returns>If the actors start function has been called.</returns>
     bool getStarted() { return m_started; }
 
-    /// <returns> The transform attached to this actor.</returns>
+    /// <returns> The transform attached to this actor. </returns>
     Transform2D* getTransform() { return m_transform; }
 
     /// <summary>
@@ -28,15 +28,14 @@ public:
     Collider* getCollider() { return m_collider; }
 
     /// <summary>
-    /// Sets this actors collider
+    /// Sets this actors collider.
     /// </summary>
-    /// <param name="collider">The new collider to attach to the actor</param>
+    /// <param name="collider"> The new collider to attach to the actor. </param>
     void setCollider(Collider* collider) { m_collider = collider; }
 
     /// <summary>
-    /// Gets the name of this actor
+    /// Gets the name of this actor.
     /// </summary>
-    /// <returns></returns>
     const char* getName() { return m_name; }
 
     /// <summary>
@@ -45,36 +44,36 @@ public:
     virtual void start();
 
     /// <summary>
-    /// Called every frame
+    /// Called every frame.
     /// </summary>
-    /// <param name="deltaTime">The time that has passed from the previous frame to the current</param>
+    /// <param name="deltaTime"> The time that has passed from the previous frame to the current. </param>
     virtual void update(float deltaTime);
 
     /// <summary>
-    /// Called every loop to update on screen visuals
+    /// Called every loop to update on screen visuals.
     /// </summary>
     virtual void draw();
 
     /// <summary>
-    /// Called when this actor is removed from the scene
+    /// Called when this actor is removed from the scene.
     /// </summary>
     virtual void end();
 
     /// <summary>
-    /// Called when this actor is destroyed 
+    /// Called when this actor is destroyed.
     /// </summary>
     virtual void onDestroy();
 
     /// <summary>
-    /// Checks if a collision occured between this actor and another
+    /// Checks if a collision occured between this actor and another.
     /// </summary>
-    /// <param name="other">The actor to check collision against</param>
+    /// <param name="other"> The actor to check collision against. </param>
     virtual bool checkForCollision(Actor* other);
 
     /// <summary>
     /// Called when a collision between this actor and another occurs. 
     /// </summary>
-    /// <param name="other">The actor this actor collided with.</param>
+    /// <param name="other"> The actor this actor collided with. </param>
     virtual void onCollision(Actor* other);
 
     /// <summary>
@@ -86,6 +85,11 @@ public:
     bool removeComponent(Component* component);
     bool removeComponent(const char* name);
 
+    /// <summary>
+    /// Gets the first instance of a component with the given name.
+    /// </summary>
+    /// <param name="name"> The name of the component. </param>
+    /// <returns> The component of the specified name. </returns>
     Component* getComponent(const char* name);
 
 protected:

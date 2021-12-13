@@ -1,5 +1,13 @@
 #include "Component.h"
 
+void Component::assignOwner(Actor* owner)
+{
+	if (!getOwner())
+		return;
+
+	m_owner = owner;
+}
+
 void Component::update(float deltaTime)
 {
 }
