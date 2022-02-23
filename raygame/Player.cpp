@@ -10,10 +10,10 @@ void Player::start()
 {
 	Actor::start();
 
-	m_inputComponent = dynamic_cast<InputComponent*>(addComponent(new InputComponent()));
-	m_moveComponent = dynamic_cast<MoveComponent*>(addComponent(new MoveComponent()));
+	m_inputComponent = addComponent<InputComponent>();
+	m_moveComponent = addComponent<MoveComponent>();
 	m_moveComponent->setMaxSpeed(500);
-	m_spriteComponent = dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("SpriteComponent", "Images/player.png")));
+	m_spriteComponent = addComponent<SpriteComponent>();
 
 
 	// Set spawn point.

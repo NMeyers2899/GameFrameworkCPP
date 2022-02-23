@@ -5,20 +5,8 @@ class Actor;
 class Component
 {
 public:
-	Component() { m_owner = nullptr; m_name = ""; }
-	Component(const char* name) {m_name = name; }
+	Component() { m_owner = nullptr; }
 	virtual ~Component() {}
-
-	/// <summary>
-	/// Gets the name of the componenet.
-	/// </summary>
-	const char* getName() { return m_name; }
-
-	/// <summary>
-	/// Sets the name of the component.
-	/// </summary>
-	/// <param name="name"> The new name of the component. </param>
-	void setName(const char* name) { m_name = name; }
 
 	/// <summary>
 	/// Gets the actor that owns this component.
@@ -51,6 +39,5 @@ public:
 
 private:
 	Actor* m_owner;
-	const char* m_name;
 	bool m_started = false;
 };

@@ -153,7 +153,13 @@ inline int DynamicArray<T>::getLength()
 template<typename T>
 inline bool DynamicArray<T>::contains(T item) 
 {
-	return item;
+	//Iterate through actor array
+	for (int i = 0; i < m_length; i++)
+	{
+		//return the current actor if it matches the argument
+		if (m_items[i] == item)
+			return true;
+	}
 }
 
 template<typename T>
